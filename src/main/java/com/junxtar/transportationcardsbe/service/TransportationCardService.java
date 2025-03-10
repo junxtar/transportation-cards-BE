@@ -23,6 +23,12 @@ public class TransportationCardService {
         CommuteType returnCommuteType = request.getReturnCommuteType();
         boolean seoulBike = request.isSeoulBike();
 
+        // 기후동행을 사용 못하는 가격이 여기서는 잠시 빠져있음
+        if (commuteType.name().startsWith("SEOUL") && returnCommuteType.name().startsWith("SEOUL")) {
+            // 기후동행 가격 온전히
+        } else {
+            // 만약 경기권 버스 혹은 지하철을 탔음에도 불구하고 기후동행을 사용하겠다고 하면 기후동행 이용료 + 별도의 교통비 지출
+        }
         Integer commuteCost = getCommuteCost(commuteType);
         Integer returnCommuteCost = getCommuteCost(returnCommuteType);
 
