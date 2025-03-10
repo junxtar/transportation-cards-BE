@@ -23,10 +23,10 @@ public class TransportationCardService {
         CommuteType returnCommuteType = request.getReturnCommuteType();
         boolean seoulBike = request.isSeoulBike();
 
-        Long commuteCost = getCommuteCost(commuteType);
-        Long returnCommuteCost = getCommuteCost(returnCommuteType);
+        Integer commuteCost = getCommuteCost(commuteType);
+        Integer returnCommuteCost = getCommuteCost(returnCommuteType);
 
-        Long totalCost = (commuteCost + returnCommuteCost) * WEEKDAYS;
+        Integer totalCost = (commuteCost + returnCommuteCost) * WEEKDAYS;
         RecommendTransportationCardResponseDto userCategoryApplyBenefitCost = getUserCategoryApplyBenefitCost(
             userCategory, totalCost);
 
@@ -59,11 +59,11 @@ public class TransportationCardService {
     }
 
     private RecommendTransportationCardResponseDto getUserCategoryApplyBenefitCost(
-        UserCategory userCategory, Long totalCost) {
+        UserCategory userCategory, Integer totalCost) {
         return switch (userCategory) {
             case LOW_INCOME -> {
-                Long kPassPrice = (long) (totalCost * 0.47);
-                Long climateActionPrice = 45000L;
+                Integer kPassPrice = (int) (totalCost * 0.47);
+                Integer climateActionPrice = 45000;
                 yield RecommendTransportationCardResponseDto.builder()
                     .kPassPrice(kPassPrice)
                     .climateActionPrice(climateActionPrice)
@@ -71,8 +71,8 @@ public class TransportationCardService {
             }
 
             case MULTI_CHILD_3 -> {
-                Long kPassPrice = (long) (totalCost * 0.5);
-                Long climateActionPrice = 45000L;
+                Integer kPassPrice = (int) (totalCost * 0.5);
+                Integer climateActionPrice = 45000;
                 yield RecommendTransportationCardResponseDto.builder()
                     .kPassPrice(kPassPrice)
                     .climateActionPrice(climateActionPrice)
@@ -80,8 +80,8 @@ public class TransportationCardService {
             }
 
             case MULTI_CHILD_2, YOUTH -> {
-                Long kPassPrice = (long) (totalCost * 0.7);
-                Long climateActionPrice = 55000L;
+                Integer kPassPrice = (int) (totalCost * 0.7);
+                Integer climateActionPrice = 55000;
                 yield RecommendTransportationCardResponseDto.builder()
                     .kPassPrice(kPassPrice)
                     .climateActionPrice(climateActionPrice)
@@ -89,8 +89,8 @@ public class TransportationCardService {
             }
 
             case GENERAL -> {
-                Long kPassPrice = (long) (totalCost * 0.8);
-                Long climateActionPrice = 62000L;
+                Integer kPassPrice = (int) (totalCost * 0.8);
+                Integer climateActionPrice = 62000;
                 yield RecommendTransportationCardResponseDto.builder()
                     .kPassPrice(kPassPrice)
                     .climateActionPrice(climateActionPrice)
@@ -99,11 +99,11 @@ public class TransportationCardService {
         };
     }
 
-    private Long getCommuteCost(CommuteType commuteType) {
+    private Integer getCommuteCost(CommuteType commuteType) {
         return switch (commuteType) {
-            case SEOUL_BUS, GENERAL_BUS -> 1500L;
-            case SEOUL_SUBWAY, GYEONGGI_SUBWAY -> 1450L;
-            case WIDE_AREA_BUS -> 2800L;
+            case SEOUL_BUS, GENERAL_BUS -> 1500;
+            case SEOUL_SUBWAY, GYEONGGI_SUBWAY -> 1450;
+            case WIDE_AREA_BUS -> 2800;
         };
     }
 }

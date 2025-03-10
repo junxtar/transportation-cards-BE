@@ -43,15 +43,15 @@ public class TransportationCard {
     private CommuteType returnCommuteType;
 
     @Column(nullable = false)
-    private Long kPassPrice;
+    private Integer kPassPrice;
 
     @Column(nullable = false)
-    private Long climateActionPrice;
+    private Integer climateActionPrice;
 
     @Builder
     private TransportationCard(UserCategory userCategory, Boolean isSeoulBike,
         CommuteType commuteType,
-        CommuteType returnCommuteType, Long kPassPrice, Long climateActionPrice) {
+        CommuteType returnCommuteType, Integer kPassPrice, Integer climateActionPrice) {
         this.userCategory = userCategory;
         this.isSeoulBike = isSeoulBike;
         this.commuteType = commuteType;

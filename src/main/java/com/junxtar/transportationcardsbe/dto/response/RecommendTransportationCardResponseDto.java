@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RecommendTransportationCardResponseDto {
 
-    private Long kPassPrice;
-    private Long climateActionPrice;
+    private Integer kPassPrice;
+    private Integer climateActionPrice;
 
     @Builder
-    private RecommendTransportationCardResponseDto(Long kPassPrice, Long climateActionPrice) {
+    private RecommendTransportationCardResponseDto(Integer kPassPrice, Integer climateActionPrice) {
         this.kPassPrice = kPassPrice;
         this.climateActionPrice = climateActionPrice;
     }
