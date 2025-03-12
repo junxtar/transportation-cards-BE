@@ -5,6 +5,7 @@ import com.junxtar.transportationcardsbe.domain.UserCategory;
 import com.junxtar.transportationcardsbe.dto.request.RecommendTransportationCardRequestDto;
 import com.junxtar.transportationcardsbe.dto.response.RecommendTransportationCardResponseDto;
 import com.junxtar.transportationcardsbe.repository.TransportationCardRepository;
+import com.junxtar.transportationcardsbe.service.action.TransportationCardAction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,10 +14,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-class TransportationCardServiceTest {
+class TransportationCardActionTest {
 
     @InjectMocks
-    private TransportationCardService transportationCardService;
+    private TransportationCardAction transportationCardAction;
 
     @Mock
     private TransportationCardRepository transportationCardRepository;
@@ -36,7 +37,7 @@ class TransportationCardServiceTest {
             .build();
 
         // when
-        RecommendTransportationCardResponseDto recommendTransportationCardResponseDto = transportationCardService.recommendTransportationCard(
+        RecommendTransportationCardResponseDto recommendTransportationCardResponseDto = transportationCardAction.recommendTransportationCard(
             requestDto);
 
         // then
