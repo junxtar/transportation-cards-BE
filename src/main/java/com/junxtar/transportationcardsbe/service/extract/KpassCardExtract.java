@@ -5,8 +5,6 @@ import static com.junxtar.transportationcardsbe.constant.CommonConstant.WEEKDAYS
 import com.junxtar.transportationcardsbe.domain.CommuteType;
 import com.junxtar.transportationcardsbe.domain.UserCategory;
 import com.junxtar.transportationcardsbe.dto.request.RecommendTransportationCardRequestDto;
-import java.util.HashMap;
-import java.util.Map.Entry;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,21 +35,6 @@ public class KpassCardExtract {
             case MULTI_CHILD_2, YOUTH -> (int) (totalCost * 0.7);
             case GENERAL -> (int) (totalCost * 0.8);
         };
-    }
-    public int singleNumber(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int answer = 0;
-        for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
-        }
-        for (Entry<Integer, Integer> entry : map.entrySet()) {
-            int key = entry.getKey();
-            int value = entry.getValue();
-            if (value == 1) {
-                return key;
-            }
-        }
-        return -1;
     }
 
     private Integer getCommuteCost(CommuteType commuteType) {
